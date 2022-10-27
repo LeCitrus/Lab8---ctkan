@@ -3,6 +3,7 @@ package com.example.lab8;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
@@ -36,6 +37,7 @@ public class CustomListTest {
         list.addCity(new City("Estevan", "SK"));
         assertEquals(list.getCount(),listSize + 1);
     }
+
     /**
      * adds city to list
      * checks if city added is in the list
@@ -50,5 +52,28 @@ public class CustomListTest {
         assertTrue(list.hasCity(city));
         assertFalse(list.hasCity(fakeCity));
     }
+
+    /**
+     * adds city to empty list
+     * get list size
+     * deletes city from list
+     * check if our current size matches the previous list size minus one
+     * deletes a city not in the list
+     * check if exception thrown
+     */
+    @Test
+    public void deleteCityTest() {
+        list = MockCityList();
+        City city = new City("Edmonton", "Alberta");
+        list.addCity(city);
+        int listSize = list.getCount();
+
+        list.deleteCity(city);
+        assertEquals(list.getCount(), listSize - 1);
+
+        City fakeCity = new City("Toronto", "Ontario");
+        assertThrows(IllegalArgumentException.class, () -> {list.deleteCity(fakeCity);});
+    }
+
 
 }
