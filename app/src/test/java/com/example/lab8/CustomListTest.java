@@ -75,5 +75,21 @@ public class CustomListTest {
         assertThrows(IllegalArgumentException.class, () -> {list.deleteCity(fakeCity);});
     }
 
+    /**
+     * adds city to empty list
+     * check if our current size matches the initial size plus one
+     * deletes city from list
+     * check if our current size matches the initial size
+     */
+    @Test
+    public void countCitiesTest() {
+        list = MockCityList();
+        int listSize = list.getCount();
+        City city = new City("Edmonton", "Alberta");
+        list.addCity(city);
+        assertEquals(list.countCities(), listSize + 1);
+        list.deleteCity(city);
+        assertEquals(list.countCities(), listSize);
+    }
 
 }

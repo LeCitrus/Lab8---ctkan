@@ -64,15 +64,17 @@ public class CustomList extends ArrayAdapter<City> {
 
     /**
      * this checks if a city object is in the list
-     *for the first phase it will just return false
+     * for the first phase it will just return false
      * @param city
+     * @return
+     *     whether or not the list has the city
      */
     public boolean hasCity(City city) {
         return cities.contains(city);
     }
 
     /**
-     * This deletes a city in the list
+     * this deletes a city in the list
      * for the first phase it will be empty
      * @param city
      */
@@ -83,6 +85,16 @@ public class CustomList extends ArrayAdapter<City> {
         else {
             throw new IllegalArgumentException();
         }
+    }
+
+    /**
+     * this counts the number of cities in the list
+     * for the first phase it will just return 0
+     * @return
+     *     the number of cities in the list
+     */
+    public int countCities() {
+        return 0;
     }
 
 }
